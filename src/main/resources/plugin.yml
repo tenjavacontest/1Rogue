@@ -1,0 +1,13 @@
+main: com.rogue.contest.Contest
+name: ${project.name}
+prefix: 1Rogue
+description: Plugin submission for ten.java contest
+version: ${project.version}
+author: 1Rogue
+website: http://1rogue.com/
+commands:
+permissions:
+  contest.*:
+    default: op
+    description: Gives access to all commands
+    children:
