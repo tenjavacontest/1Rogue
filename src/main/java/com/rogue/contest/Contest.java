@@ -26,5 +26,9 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @version 1.0.0
  */
 public class Contest extends JavaPlugin {
+    
+    public void onEnable() {
+        
+    }
 
 }
