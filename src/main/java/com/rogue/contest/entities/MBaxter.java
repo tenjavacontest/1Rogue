@@ -16,24 +16,12 @@
  */
 package com.rogue.contest.entities;
 
-import net.minecraft.server.v1_6_R3.EntityEnderDragon;
-import net.minecraft.server.v1_6_R3.World;
-
-
 /**
  *
  * @since
  * @author 1Rogue
  * @version
  */
-public class DBAncientDragon extends EntityEnderDragon {
+public class MBaxter {
 
-    public DBAncientDragon(World world) {
-        super(world);
-    }
-    
-    @Override
-    public String toString() {
-        return "DBAncientDragon";
-    }
 }

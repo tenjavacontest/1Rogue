@@ -16,12 +16,21 @@
  */
 package com.rogue.contest.entities;
 
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+
 /**
  *
- * @since
+ * @since 1.0.0
  * @author 1Rogue
- * @version
+ * @version 1.0.0
  */
 public class MBaxterHandler {
+    
+    private final Map<String, MBaxter> mbaxters = new ConcurrentHashMap<String, MBaxter>();
+
+    public MBaxterHandler() {
+        
+    }
 
 }

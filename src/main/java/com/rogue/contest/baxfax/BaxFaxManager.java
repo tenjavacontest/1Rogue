@@ -14,42 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rogue.contest;
+package com.rogue.contest.baxfax;
 
-import com.rogue.contest.baxfax.BaxFaxManager;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
-import org.bukkit.plugin.java.JavaPlugin;
+import com.rogue.contest.Contest;
 
 /**
- * Main class for ten.java programming contest. (Dragonborn)
  *
- * @since 1.0.0
+ * @since
  * @author 1Rogue
- * @version 1.0.0
+ * @version
  */
-public class Contest extends JavaPlugin {
+public class BaxFaxManager {
     
-    private BaxFaxManager baxfax;
+    private final Contest plugin;
     
-    @Override
-    public void onLoad() {
-        this.baxfax = new BaxFaxManager(this);
+    public BaxFaxManager(Contest plugin) {
+        this.plugin = plugin;
     }
-    
-    @Override
-    public void onEnable() {
-    }
-    
-    @Override
-    public void onDisable() {
-        
-    }
-    
-    @Override
-    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        return true;
-    }
-        
 
 }
