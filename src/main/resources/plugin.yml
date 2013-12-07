@@ -1,4 +1,4 @@
-main: com.rogue.contest.Contest
+main: com.rogue.mbaxter.Mbaxter
 name: ${project.name}
 prefix: 1Rogue
 description: Plugin submission for ten.java contest

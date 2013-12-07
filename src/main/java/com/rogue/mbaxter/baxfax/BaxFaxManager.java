@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rogue.contest.baxfax;
+package com.rogue.mbaxter.baxfax;
 
-import com.rogue.contest.Contest;
+import com.rogue.mbaxter.Mbaxter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -39,16 +39,23 @@ import org.json.simple.parser.JSONParser;
  */
 public class BaxFaxManager {
     
-    private final Contest plugin;
+    private final Mbaxter plugin;
     private final String baxfaxLocation = "https://raw.github.com/RoyalDev/RoyalBot/master/src/main/resources/config.yml";
     //private final LinkedQueue<String> baxfax = new LinkedQueue<String>();
     
-    public BaxFaxManager(Contest plugin) {
+    public BaxFaxManager(Mbaxter plugin) {
         this.plugin = plugin;
         ReadableByteChannel rbc = null;
         FileOutputStream fos = null;
         File f = new File(this.plugin.getDataFolder(), "config.yml");
         try {
+            if (!this.plugin.getDataFolder().exists()) {
+                this.plugin.getDataFolder().mkdir();
+            }
+            if (f.exists()) {
+                f.delete();
+            }
+            f.createNewFile();
             URL call = new URL(this.baxfaxLocation);
             rbc = Channels.newChannel(call.openStream());
             fos = new FileOutputStream(f);

@@ -14,9 +14,9 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rogue.contest.listener;
+package com.rogue.mbaxter.listener;
 
-import com.rogue.contest.Contest;
+import com.rogue.mbaxter.Mbaxter;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
@@ -35,9 +35,9 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
  */
 public class MbaxterListener implements Listener {
     
-    private final Contest plugin;
+    private final Mbaxter plugin;
     
-    public MbaxterListener(Contest plugin) {
+    public MbaxterListener(Mbaxter plugin) {
         this.plugin = plugin;
     }
     

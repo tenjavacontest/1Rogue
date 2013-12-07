@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.rogue</groupId>
-  <artifactId>Contest</artifactId>
+  <artifactId>Mbaxter</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
@@ -42,12 +42,6 @@
         <dependency>
             <groupId>org.bukkit</groupId>
             <artifactId>bukkit</artifactId>
-            <version>1.6.4-R2.0</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
-            <groupId>org.bukkit</groupId>
-            <artifactId>craftbukkit</artifactId>
             <version>1.6.4-R2.0</version>
             <type>jar</type>
         </dependency>
