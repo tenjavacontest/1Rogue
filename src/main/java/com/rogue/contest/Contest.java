@@ -50,6 +50,10 @@ public class Contest extends JavaPlugin {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         return true;
     }
+    
+    public BaxFaxManager getBaxFax() {
+        return this.baxfax;
+    }
         
 
 }
