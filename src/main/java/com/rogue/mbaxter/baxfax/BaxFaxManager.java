@@ -81,7 +81,7 @@ public class BaxFaxManager {
         
     }
     
-    public String newBaxFax() {
+    public synchronized String newBaxFax() {
         Collections.shuffle(this.fax);
         return this.fax.iterator().next();
     }
