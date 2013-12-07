@@ -43,6 +43,9 @@ public class MbaxterListener implements Listener {
     @EventHandler
     public void onCritterSpawn(CreatureSpawnEvent event) {
         LivingEntity e = event.getEntity();
+        if (e instanceof Player) {
+            return;
+        }
         e.setCustomName("mbaxter");
         e.setCustomNameVisible(true);
     }
@@ -60,6 +63,9 @@ public class MbaxterListener implements Listener {
     
     @EventHandler
     public void onInteract(PlayerInteractEntityEvent event) {
+        if (event.getRightClicked() instanceof Player) {
+            return;
+        }
         event.getPlayer().sendMessage(this.plugin.getBaxFax().newBaxFax());
     }
 
