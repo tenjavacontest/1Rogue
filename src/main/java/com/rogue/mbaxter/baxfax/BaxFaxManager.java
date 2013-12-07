@@ -85,7 +85,6 @@ public class BaxFaxManager {
                 Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        //fuck it all I'll use yaml
         YamlConfiguration yaml = YamlConfiguration.loadConfiguration(f);
         this.fax = yaml.getStringList("baxfax");
         
