@@ -16,7 +16,10 @@
  */
 package com.rogue.contest.entities;
 
-import org.bukkit.craftbukkit.v1_6_4.entity.CraftEnderDragon;
+import net.minecraft.server.v1_6_R3.EntityEnderDragon;
+import org.bukkit.craftbukkit.v1_6_R3.CraftServer;
+import org.bukkit.craftbukkit.v1_6_R3.entity.CraftEnderDragon;
+
 
 /**
  *
@@ -24,6 +27,20 @@ import org.bukkit.craftbukkit.v1_6_4.entity.CraftEnderDragon;
  * @author 1Rogue
  * @version
  */
-public class AncientDragon extends CraftEnderDragon {
+public class DBAncientDragon extends CraftEnderDragon {
 
+    /**
+     * Ancient dragon constructor
+     * 
+     * @param server
+     * @param entity 
+     */
+    public DBAncientDragon(CraftServer server, EntityEnderDragon entity) {
+        super(server, entity);
+    }
+    
+    @Override
+    public String toString() {
+        return "DBAncientDragon";
+    }
 }
