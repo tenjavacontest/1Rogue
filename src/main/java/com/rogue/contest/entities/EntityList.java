@@ -24,7 +24,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.minecraft.server.v1_6_R3.BiomeBase;
 import net.minecraft.server.v1_6_R3.BiomeMeta;
+import net.minecraft.server.v1_6_R3.EntityEnderDragon;
 import net.minecraft.server.v1_6_R3.EntityTypes;
+import org.bukkit.entity.EntityType;
 
 /**
  *
@@ -34,22 +36,28 @@ import net.minecraft.server.v1_6_R3.EntityTypes;
  */
 public enum EntityList {
     
-    ANCIENTDRAGON(DBAncientDragon.class, "Ancient Dragon", 63);
+    ANCIENTDRAGON(DBAncientDragon.class, "Ancient Dragon", 63, EntityType.ENDER_DRAGON, EntityEnderDragon.class);
     
     private final Class<?> clazz;
     private final String name;
     private final int id;
+    private final EntityType type;
+    private final Class<?> nms;
     
     /**
      * EntityList enum constructor
      * @param clazz
      * @param name
      * @param id 
+     * @param ent
+     * @param nms
      */
-    private EntityList(Class<?> clazz, String name, int id) {
+    private EntityList(Class<?> clazz, String name, int id, EntityType ent, Class<?> nms) {
         this.clazz = clazz;
         this.name = name;
         this.id = id;
+        this.type = ent;
+        this.nms = nms;
     }
     
     /**
@@ -74,6 +82,22 @@ public enum EntityList {
      */
     public int getId() {
         return 0;
+    }
+    
+    /**
+     * Gets the nms class for this entity
+     * @return 
+     */
+    public Class<?> getNMS() {
+        return this.nms;
+    }
+    
+    /**
+     * Gets the bukkit EntityType for this entity
+     * @return 
+     */
+    public EntityType getCBEnt() {
+        return this.type;
     }
 
     /**
@@ -111,7 +135,7 @@ public enum EntityList {
                     List<BiomeMeta> mobs = (List<BiomeMeta>) itr.get(biome);
                     for (BiomeMeta meta : mobs) {
                         for (EntityList ent : values()) {
-                            if (ent.getCClass().equals(meta.b)) {
+                            if (ent.getNMS().equals(meta.b)) {
                                 meta.b = ent.getCClass();
                             }
                         }
