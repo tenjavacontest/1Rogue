@@ -17,13 +17,16 @@
 package com.rogue.mbaxter.listener;
 
 import com.rogue.mbaxter.Mbaxter;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 /**
@@ -36,6 +39,7 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
 public class MbaxterListener implements Listener {
     
     private final Mbaxter plugin;
+    private final String prefix = "[" + ChatColor.RED + "Baxfax" + ChatColor.RESET + "] ";
     
     public MbaxterListener(Mbaxter plugin) {
         this.plugin = plugin;
@@ -59,7 +63,7 @@ public class MbaxterListener implements Listener {
             return;
         }
         Player p = (Player) butthurt;
-        p.sendMessage(this.plugin.getBaxFax().newBaxFax() + "!!");
+        p.sendMessage(this.prefix.toUpperCase() + this.plugin.getBaxFax().newBaxFax() + "!!");
     }
     
     @EventHandler
@@ -67,7 +71,20 @@ public class MbaxterListener implements Listener {
         if (event.getRightClicked() instanceof Player) {
             return;
         }
-        event.getPlayer().sendMessage(this.plugin.getBaxFax().newBaxFax());
+        event.getPlayer().sendMessage(this.prefix + this.plugin.getBaxFax().newBaxFax());
+    }
+    
+    @EventHandler
+    public void onTarget(EntityTargetLivingEntityEvent event) {
+        if (event.getTarget() instanceof Player) { 
+            if (event.getEntityType() == EntityType.ENDERMAN) {
+                ((Player) event.getTarget()).sendMessage("["
+                        + ChatColor.RED
+                        + "Enderman"
+                        + ChatColor.RESET
+                        + "] Sir do you have a moment to talk about our lord and savior?");
+            }
+        }
     }
 
 }
