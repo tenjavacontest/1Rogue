@@ -6,6 +6,8 @@ version: ${project.version}
 author: 1Rogue
 website: http://1rogue.com/
 commands:
+  test:
+    description: pineapples
 permissions:
   contest.*:
     default: op

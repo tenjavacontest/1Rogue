@@ -16,10 +16,14 @@
  */
 package com.rogue.contest;
 
+import com.rogue.contest.entities.EntityList;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * Main class for ten.java programming contest.
+ * Main class for ten.java programming contest. (Dragonborn)
  *
  * @since 1.0.0
  * @author 1Rogue
@@ -27,8 +31,29 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Contest extends JavaPlugin {
     
-    public void onEnable() {
+    @Override
+    public void onLoad() {
         
     }
+    
+    @Override
+    public void onEnable() {
+        EntityList.registerEntities();
+    }
+    
+    @Override
+    public void onDisable() {
+        
+    }
+    
+    @Override
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (sender instanceof Player) {
+            Player p = (Player) sender;
+            p.getLocation().getWorld().spawnEntity(p.getLocation(), EntityList.ANCIENTDRAGON.getCBEnt());
+        }
+        return true;
+    }
+        
 
 }
