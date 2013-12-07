@@ -17,6 +17,7 @@
 package com.rogue.mbaxter;
 
 import org.bukkit.World;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 
@@ -28,21 +29,21 @@ import org.bukkit.entity.Player;
  * @version 1.0.0
  */
 public class MbaxterRunnable implements Runnable {
-    
+
     private final Mbaxter plugin;
 
     /**
      * MbaxterRunnable constructor
-     * 
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
+     *
      * @param plugin Main {@link Mbaxter} instance
      */
     MbaxterRunnable(Mbaxter plugin) {
         this.plugin = plugin;
     }
-    
+
     /**
      * Tags all living entities in the server
      */
@@ -50,7 +51,11 @@ public class MbaxterRunnable implements Runnable {
         for (World w : this.plugin.getServer().getWorlds()) {
             for (LivingEntity e : w.getLivingEntities()) {
                 if (!(e instanceof Player)) {
-                    e.setCustomName("mbaxter");
+                    if (e.getType() == EntityType.BAT) {
+                        e.setCustomName("hawkfalcon");
+                    } else {
+                        e.setCustomName("mbaxter");
+                    }
                     e.setCustomNameVisible(true);
                 }
             }

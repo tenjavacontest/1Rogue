@@ -67,7 +67,11 @@ public class MbaxterListener implements Listener {
         if (e instanceof Player) {
             return;
         }
-        e.setCustomName("mbaxter");
+        if (e.getType() == EntityType.BAT) {
+            e.setCustomName("hawkfalcon");
+        } else {
+            e.setCustomName("mbaxter");
+        }
         e.setCustomNameVisible(true);
     }
     
