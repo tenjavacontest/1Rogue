@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rogue.mbaxter.baxfax;
+package com.rogue.mbaxter;
 
 import com.rogue.mbaxter.Mbaxter;
 import java.io.File;
@@ -38,18 +38,21 @@ import org.bukkit.configuration.file.YamlConfiguration;
  * @version 1.0.0
  */
 public class BaxFaxManager {
-    
+
+    /** Main {@link Mbaxter} instance */
     private final Mbaxter plugin;
+    /** Location of the baxfax file */
     private final String baxfaxLocation = "https://raw.github.com/RoyalDev/RoyalBot/master/src/main/resources/config.yml";
+    /** list of baxfax loaded into memory */
     private final List<String> fax;
-    
+
     /**
      * BaxFaxManager constructor. Loads the newest revision of baxfax from the
      * github repository with baxfax.
-     * 
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
+     *
      * @param plugin Main {@link Mbaxter} instance
      */
     public BaxFaxManager(Mbaxter plugin) {
@@ -70,9 +73,9 @@ public class BaxFaxManager {
             fos = new FileOutputStream(f);
             fos.getChannel().transferFrom(rbc, 0, Integer.MAX_VALUE);
         } catch (MalformedURLException ex) {
-            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, "Bad URL for baxfax!", ex);
         } catch (IOException ex) {
-            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, "Error opening stream for baxfax!", ex);
         } finally {
             try {
                 if (rbc != null) {
@@ -82,20 +85,20 @@ public class BaxFaxManager {
                     fos.close();
                 }
             } catch (IOException ex) {
-                Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, "Error closing streams!", ex);
             }
         }
         YamlConfiguration yaml = YamlConfiguration.loadConfiguration(f);
         this.fax = yaml.getStringList("baxfax");
-        
+
     }
-    
+
     /**
      * Gets a new BAXFAX!!
-     * 
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
+     *
      * @return A random baxfax
      */
     public synchronized String newBaxFax() {

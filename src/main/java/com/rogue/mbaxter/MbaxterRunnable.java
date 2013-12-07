@@ -30,6 +30,7 @@ import org.bukkit.entity.Player;
  */
 public class MbaxterRunnable implements Runnable {
 
+    /** Main {@link Mbaxter} instance */
     private final Mbaxter plugin;
 
     /**
@@ -46,6 +47,9 @@ public class MbaxterRunnable implements Runnable {
 
     /**
      * Tags all living entities in the server
+     *
+     * @since 1.0.0
+     * @version 1.0.0
      */
     public void run() {
         for (World w : this.plugin.getServer().getWorlds()) {

@@ -16,8 +16,6 @@
  */
 package com.rogue.mbaxter;
 
-import com.rogue.mbaxter.baxfax.BaxFaxManager;
-import com.rogue.mbaxter.listener.MbaxterListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
@@ -29,14 +27,28 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class Mbaxter extends JavaPlugin {
     
+    /** Manages baxfax messages */
     private BaxFaxManager baxfax;
+    /** Handles in-game notices and naming */
     private MbaxterListener listener;
     
+    /**
+     * Loads the {@link BaxFaxManager}
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     */
     @Override
     public void onLoad() {
         this.baxfax = new BaxFaxManager(this);
     }
     
+    /**
+     * Enables the listener and re-tags entities on the server
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     */
     @Override
     public void onEnable() {
         this.listener = new MbaxterListener(this);

@@ -14,9 +14,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.rogue.mbaxter.listener;
+package com.rogue.mbaxter;
 
-import com.rogue.mbaxter.Mbaxter;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -37,29 +36,31 @@ import org.bukkit.event.player.PlayerInteractEntityEvent;
  * @version 1.0.0
  */
 public class MbaxterListener implements Listener {
-    
+
+    /** Main {@link Mbaxter} instance */
     private final Mbaxter plugin;
+    /** Prefix used for plugin messages */
     private final String prefix = "[" + ChatColor.RED + "baxfax" + ChatColor.RESET + "] ";
-    
+
     /**
      * MbaxterListener constructor
-     * 
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
+     *
      * @param plugin Main {@link Mbaxter} instance
      */
     public MbaxterListener(Mbaxter plugin) {
         this.plugin = plugin;
     }
-    
+
     /**
      * Tags new entities
-     * 
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @EventHandler
     public void onCritterSpawn(CreatureSpawnEvent event) {
@@ -74,14 +75,14 @@ public class MbaxterListener implements Listener {
         }
         e.setCustomNameVisible(true);
     }
-    
+
     /**
      * Hostile mobs shout baxfax at you
-     * 
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
@@ -93,14 +94,14 @@ public class MbaxterListener implements Listener {
         Player p = (Player) butthurt;
         p.sendMessage(this.prefix.toUpperCase() + this.plugin.getBaxFax().newBaxFax() + "!!");
     }
-    
+
     /**
      * Interacting with mbaxter will give you awesome baxfax
-     * 
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
-     * @param event 
+     *
+     * @param event
      */
     @EventHandler
     public void onInteract(PlayerInteractEntityEvent event) {
@@ -109,23 +110,22 @@ public class MbaxterListener implements Listener {
         }
         event.getPlayer().sendMessage(this.prefix + this.plugin.getBaxFax().newBaxFax());
     }
-    
+
     /**
      * This would SUPPOSEDLY make endermen part of a mighty religious cult.
-     * Unfortunately that is not the case.
-     * 
+     * Unfortunately that is not the case since bukkit does not fire an event
+     * for this.
+     *
      * @since 1.0.0
      * @version 1.0.0
-     * 
-     * @param event 
+     *
+     * @deprecated
+     * @param event
      */
     @EventHandler
     public void onTarget(EntityTargetLivingEntityEvent event) {
-        System.out.println("checking target instance...");
         if (event.getTarget() instanceof Player) {
-            System.out.println("checking enderman instance...");
             if (event.getEntityType() == EntityType.ENDERMAN) {
-                System.out.println("sending message");
                 ((Player) event.getTarget()).sendMessage("["
                         + ChatColor.RED
                         + "Enderman"

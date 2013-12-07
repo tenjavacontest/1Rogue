@@ -7,7 +7,7 @@
   <version>1.0.0</version>
   <packaging>jar</packaging>
 
-  <name>Contest</name>
+  <name>Mbaxter</name>
   <url>http://maven.apache.org</url>
 
   <repositories>
@@ -31,7 +31,6 @@
                 <filtering>true</filtering>
                 <includes>
                     <include>plugin.yml</include>
-                    <include>config.yml</include>
                 </includes>
             </resource>
         </resources>
