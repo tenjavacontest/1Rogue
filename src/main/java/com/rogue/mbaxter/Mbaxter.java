@@ -18,8 +18,6 @@ package com.rogue.mbaxter;
 
 import com.rogue.mbaxter.baxfax.BaxFaxManager;
 import com.rogue.mbaxter.listener.MbaxterListener;
-import org.bukkit.command.Command;
-import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**

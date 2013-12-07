@@ -18,18 +18,17 @@ package com.rogue.mbaxter.baxfax;
 
 import com.rogue.mbaxter.Mbaxter;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
+import java.util.Collections;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.simple.parser.JSONParser;
+import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
  *
@@ -41,7 +40,7 @@ public class BaxFaxManager {
     
     private final Mbaxter plugin;
     private final String baxfaxLocation = "https://raw.github.com/RoyalDev/RoyalBot/master/src/main/resources/config.yml";
-    //private final LinkedQueue<String> baxfax = new LinkedQueue<String>();
+    private final List<String> fax;
     
     public BaxFaxManager(Mbaxter plugin) {
         this.plugin = plugin;
@@ -76,21 +75,15 @@ public class BaxFaxManager {
                 Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        InputStream is = null;
-        try {
-            is = new FileInputStream(f);
-            String jsontxt = is.toString();
-            //fix later, json is stupid
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
-            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //fuck it all I'll use yaml
+        YamlConfiguration yaml = YamlConfiguration.loadConfiguration(f);
+        this.fax = yaml.getStringList("baxfax");
         
     }
     
     public String newBaxFax() {
-        return null;
+        Collections.shuffle(this.fax);
+        return this.fax.iterator().next();
     }
 
 }
