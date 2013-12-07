@@ -18,6 +18,8 @@ package com.rogue.contest.baxfax;
 
 import com.rogue.contest.Contest;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +29,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.json.simple.parser.JSONParser;
 
 /**
  *
@@ -67,7 +69,16 @@ public class BaxFaxManager {
                 Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        YamlConfiguration yaml = YamlConfiguration.loadConfiguration(f);
+        InputStream is = null;
+        try {
+            is = new FileInputStream(f);
+            String jsontxt = is.toString();
+            //fix later, json is stupid
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(BaxFaxManager.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }
     
