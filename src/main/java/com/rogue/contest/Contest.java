@@ -17,6 +17,7 @@
 package com.rogue.contest;
 
 import com.rogue.contest.baxfax.BaxFaxManager;
+import com.rogue.contest.listener.MbaxterListener;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -31,10 +32,13 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class Contest extends JavaPlugin {
     
     private BaxFaxManager baxfax;
+    private MbaxterListener listener;
     
     @Override
     public void onLoad() {
         this.baxfax = new BaxFaxManager(this);
+        this.listener = new MbaxterListener(this);
+        this.getServer().getPluginManager().registerEvents(this.listener, this);
     }
     
     @Override
