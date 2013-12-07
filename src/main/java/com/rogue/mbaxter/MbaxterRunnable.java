@@ -16,37 +16,34 @@
  */
 package com.rogue.mbaxter;
 
-import com.rogue.mbaxter.baxfax.BaxFaxManager;
-import com.rogue.mbaxter.listener.MbaxterListener;
-import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.World;
+import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Player;
 
 /**
- * Main class for ten.java programming contest.
+ * Lets be SUPER DUPER sure all the entities are named
  *
  * @since 1.0.0
  * @author 1Rogue
  * @version 1.0.0
  */
-public class Mbaxter extends JavaPlugin {
+public class MbaxterRunnable implements Runnable {
     
-    private BaxFaxManager baxfax;
-    private MbaxterListener listener;
-    
-    @Override
-    public void onLoad() {
-        this.baxfax = new BaxFaxManager(this);
+    private final Mbaxter plugin;
+
+    MbaxterRunnable(Mbaxter plugin) {
+        this.plugin = plugin;
     }
     
-    @Override
-    public void onEnable() {
-        this.listener = new MbaxterListener(this);
-        this.getServer().getPluginManager().registerEvents(this.listener, this);
-        this.getServer().getScheduler().runTaskLater(this, new MbaxterRunnable(this), 20L);
+    public void run() {
+        for (World w : this.plugin.getServer().getWorlds()) {
+            for (LivingEntity e : w.getLivingEntities()) {
+                if (!(e instanceof Player)) {
+                    e.setCustomName("mbaxter");
+                    e.setCustomNameVisible(true);
+                }
+            }
+        }
     }
-    
-    public BaxFaxManager getBaxFax() {
-        return this.baxfax;
-    }
-        
 
 }
