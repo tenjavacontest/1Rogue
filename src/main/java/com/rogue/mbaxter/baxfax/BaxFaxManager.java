@@ -31,10 +31,11 @@ import java.util.logging.Logger;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 /**
+ * Handles baxfax....s
  *
- * @since
+ * @since 1.0.0
  * @author 1Rogue
- * @version
+ * @version 1.0.0
  */
 public class BaxFaxManager {
     
@@ -42,6 +43,15 @@ public class BaxFaxManager {
     private final String baxfaxLocation = "https://raw.github.com/RoyalDev/RoyalBot/master/src/main/resources/config.yml";
     private final List<String> fax;
     
+    /**
+     * BaxFaxManager constructor. Loads the newest revision of baxfax from the
+     * github repository with baxfax.
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @param plugin Main {@link Mbaxter} instance
+     */
     public BaxFaxManager(Mbaxter plugin) {
         this.plugin = plugin;
         ReadableByteChannel rbc = null;
@@ -81,6 +91,14 @@ public class BaxFaxManager {
         
     }
     
+    /**
+     * Gets a new BAXFAX!!
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @return A random baxfax
+     */
     public synchronized String newBaxFax() {
         Collections.shuffle(this.fax);
         return this.fax.iterator().next();

@@ -44,6 +44,14 @@ public class Mbaxter extends JavaPlugin {
         this.getServer().getScheduler().runTaskLater(this, new MbaxterRunnable(this), 20L);
     }
     
+    /**
+     * Returns the BaxFax manager
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @return Main {@link BaxFaxManager} instance
+     */
     public BaxFaxManager getBaxFax() {
         return this.baxfax;
     }

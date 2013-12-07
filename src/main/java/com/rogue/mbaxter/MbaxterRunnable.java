@@ -31,10 +31,21 @@ public class MbaxterRunnable implements Runnable {
     
     private final Mbaxter plugin;
 
+    /**
+     * MbaxterRunnable constructor
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @param plugin Main {@link Mbaxter} instance
+     */
     MbaxterRunnable(Mbaxter plugin) {
         this.plugin = plugin;
     }
     
+    /**
+     * Tags all living entities in the server
+     */
     public void run() {
         for (World w : this.plugin.getServer().getWorlds()) {
             for (LivingEntity e : w.getLivingEntities()) {
