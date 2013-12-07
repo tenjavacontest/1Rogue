@@ -30,21 +30,37 @@ import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
 
 /**
- * Entitties
+ * Hehe... Entitties
  *
- * @since
+ * @since 1.0.0
  * @author 1Rogue
- * @version
+ * @version 1.0.0
  */
 public class MbaxterListener implements Listener {
     
     private final Mbaxter plugin;
-    private final String prefix = "[" + ChatColor.RED + "Baxfax" + ChatColor.RESET + "] ";
+    private final String prefix = "[" + ChatColor.RED + "baxfax" + ChatColor.RESET + "] ";
     
+    /**
+     * MbaxterListener constructor
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @param plugin Main {@link Mbaxter} instance
+     */
     public MbaxterListener(Mbaxter plugin) {
         this.plugin = plugin;
     }
     
+    /**
+     * Tags new entities
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @param event 
+     */
     @EventHandler
     public void onCritterSpawn(CreatureSpawnEvent event) {
         LivingEntity e = event.getEntity();
@@ -55,6 +71,14 @@ public class MbaxterListener implements Listener {
         e.setCustomNameVisible(true);
     }
     
+    /**
+     * Hostile mobs shout baxfax at you
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @param event 
+     */
     @EventHandler
     public void onDamage(EntityDamageByEntityEvent event) {
         Entity damager = event.getDamager();
@@ -66,6 +90,14 @@ public class MbaxterListener implements Listener {
         p.sendMessage(this.prefix.toUpperCase() + this.plugin.getBaxFax().newBaxFax() + "!!");
     }
     
+    /**
+     * Interacting with mbaxter will give you awesome baxfax
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @param event 
+     */
     @EventHandler
     public void onInteract(PlayerInteractEntityEvent event) {
         if (event.getRightClicked() instanceof Player) {
@@ -74,10 +106,22 @@ public class MbaxterListener implements Listener {
         event.getPlayer().sendMessage(this.prefix + this.plugin.getBaxFax().newBaxFax());
     }
     
+    /**
+     * This would SUPPOSEDLY make endermen part of a mighty religious cult.
+     * Unfortunately that is not the case.
+     * 
+     * @since 1.0.0
+     * @version 1.0.0
+     * 
+     * @param event 
+     */
     @EventHandler
     public void onTarget(EntityTargetLivingEntityEvent event) {
-        if (event.getTarget() instanceof Player) { 
+        System.out.println("checking target instance...");
+        if (event.getTarget() instanceof Player) {
+            System.out.println("checking enderman instance...");
             if (event.getEntityType() == EntityType.ENDERMAN) {
+                System.out.println("sending message");
                 ((Player) event.getTarget()).sendMessage("["
                         + ChatColor.RED
                         + "Enderman"
