@@ -101,7 +101,11 @@ public class BaxFaxManager {
      */
     public synchronized String newBaxFax() {
         Collections.shuffle(this.fax);
-        return this.fax.iterator().next();
+        String back = this.fax.iterator().next();
+        if (back.endsWith(".")) {
+            back = back.substring(0, back.length() - 1);
+        }
+        return back;
     }
 
 }
