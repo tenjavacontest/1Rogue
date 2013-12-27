@@ -57,6 +57,8 @@ public class MbaxterRunnable implements Runnable {
                 if (!(e instanceof Player)) {
                     if (e.getType() == EntityType.BAT) {
                         e.setCustomName("hawkfalcon");
+                    } else if (e.getType() == EntityType.CREEPER) {
+                        e.setCustomName("Hoolean");
                     } else {
                         e.setCustomName("mbaxter");
                     }
